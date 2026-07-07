@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --bg: #050505;
+  --primary: #f4b400;
+  --accent: #ffd54a;
+  --text: #ffffff;
+  --text-secondary: #bdbdbd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Clash Display', sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(24px);
+}
+
+.section-shell {
+  width: min(1320px, 92vw);
+  margin-inline: auto;
+}
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 20%, #ffd54a 60%, #f4b400 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 28px rgba(255, 213, 74, 0.22);
+}
+
+.beam {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 233, 180, 0.32) 0%,
+    rgba(255, 210, 120, 0.2) 20%,
+    rgba(130, 150, 255, 0.14) 40%,
+    rgba(150, 120, 255, 0.12) 62%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  filter: blur(18px);
+  mix-blend-mode: screen;
+  transform: rotate(3deg);
+  will-change: transform, opacity;
+}
+
+.hero-fog-layer {
+  opacity: 0.12;
+  filter: blur(34px);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(138, 165, 255, 0.12) 26%,
+    rgba(0, 0, 0, 0) 72%
+  );
+}
+
+.fog-1 {
+  animation: fogDrift 18s ease-in-out infinite alternate;
+}
+
+.fog-2 {
+  animation: fogDrift 26s ease-in-out infinite alternate-reverse;
+}
+
+.laser {
+  background: linear-gradient(90deg, rgba(126, 169, 255, 0), rgba(126, 169, 255, 0.62), rgba(126, 169, 255, 0));
+  filter: blur(0.3px);
+  transform-origin: left center;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+.laser-1 {
+  transform: rotate(-7deg);
+}
+
+.laser-2 {
+  transform: rotate(8deg);
+}
+
+.particle {
+  animation: particleFloat linear infinite;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  will-change: transform, opacity;
+}
+
+.hero-stage::after {
+  content: '';
+  position: absolute;
+  inset: auto 8% 8% 8%;
+  height: 24%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(244, 180, 0, 0.12), rgba(0, 0, 0, 0));
+  filter: blur(36px);
+  pointer-events: none;
+}
+
+.hero-story {
+  contain: layout paint;
+}
+
+.hero-stage {
+  will-change: transform, filter;
+}
+
+.hero-video-wrap {
+  will-change: opacity, transform;
+}
+
+.hero-content-wrap,
+.hero-title-wrap,
+.hero-ambient-glow,
+.hero-particles,
+.headline-word {
+  will-change: transform, opacity, filter;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.9);
+    opacity: 0.18;
+  }
+  30% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translate3d(0, -40px, 0) scale(1.1);
+    opacity: 0.08;
+  }
+}
+
+@keyframes fogDrift {
+  0% {
+    transform: translateX(-3%) translateY(0);
+  }
+  100% {
+    transform: translateX(3%) translateY(-6%);
+  }
+}
